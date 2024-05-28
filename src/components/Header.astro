@@ -1,0 +1,14 @@
+---
+import { getImage } from 'astro:assets';
+import PRHeader from "./header"
+import logoNavbar from "../images/logonavbar.svg"
+const logNavbar = await getImage({ src: logoNavbar, width: 96, height: 48,   format: 'jpg'
+ });
+const sections = [
+    { lbl: "Home", href: "/" },
+    { lbl: "Le stanze", href: "/le-stanze" },
+    { lbl: "Dove Siamo", href: "/dove-siamo" },
+    { lbl: "Contatti", href: "#footer" },
+  ]
+---
+<PRHeader logo={logNavbar} sections={sections} client:load></PRHeader>

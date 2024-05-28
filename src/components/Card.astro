@@ -1,0 +1,15 @@
+---
+interface Props {
+  title: string;
+  text: string;
+}
+
+const { title, text } = Astro.props;
+---
+
+<article
+  class="grid place-items-center gap-16 w-full sm:w-auto mx-auto p-12 bg-tltr-100 rounded-lg z-10 shadow-md "
+>
+  <h3 class="font-bold text-center">{title}</h3>
+  {text && <p class="block">{text}</p>}
+</article>

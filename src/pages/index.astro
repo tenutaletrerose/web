@@ -1,0 +1,97 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import { Image } from 'astro:assets';
+import car1 from "../images/1.jpg"
+import car2 from "../images/2.jpg"
+import car3 from "../images/3.jpg"
+import car4 from "../images/4.jpg"
+
+const slides = [car1, car2, car3, car4]
+const cards = [
+    {
+      icon: "",
+      title: "Nel Parco del Cilento",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+    },
+    {
+      icon: "",
+      title: "Vicino al mare",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+    },
+    {
+      icon: "",
+      title: "Scopri il cilento",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+    },
+    {
+      icon: "",
+      title: "Servizi",
+      text:
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+    },
+  ]
+---
+
+<Layout title="Tenuta Le Tre Rose">
+	<div class="container mx-auto w-3/4 ">
+		<h1 class="text-2xl text-center font-bold">Hello world!</h1>
+		<p class="leading-6 box-border">
+		  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
+		  vulputate arcu, vel aliquam orci. Nulla tempor elementum magna, laoreet
+		  eleifend augue. Nulla in neque mollis, fringilla sem a, tincidunt felis.
+		  Duis maximus arcu sit amet sapien iaculis suscipit. Cras sit amet
+		  feugiat justo, non aliquet mi. Nullam viverra elit felis, id viverra
+		  nibh eleifend vel. Nullam hendrerit ante dui, sit amet elementum ex
+		  mollis vitae. Nam ipsum tellus, scelerisque sit amet augue eu, egestas
+		  bibendum nulla. Vivamus vitae ex magna. Etiam ut nibh vel leo fringilla
+		  egestas. Aenean mauris arcu, efficitur eget mauris eu, euismod fringilla
+		  massa. Donec interdum purus vel mi ullamcorper, malesuada posuere purus
+		  auctor. Sed cursus erat at magna ultricies, a efficitur odio facilisis.
+		  Sed nisi odio, auctor eget mi a, finibus pretium arcu. Sed ornare mauris
+		  in ligula elementum, eu tincidunt neque porta. Ut ut nisl eros. Etiam
+		  nunc ante, porttitor eu malesuada nec, consequat.
+		</p>
+		<div class="w-50 px-16 mt-6">
+			<swiper-container
+			  effect="coverflow"
+			  coverflow-effect-rotate={0}
+			  coverflow-effect-stretch={0}
+			  coverflow-effect-depth={100}
+			  coverflow-effect-modifier={3}
+			  coverflow-effect-slide-shadows={true}
+			  slides-per-view={1}
+			  speed={600}
+			  grab-cursor={true}
+			  centered-slides={true}
+			  loop={true}
+			  autoplay-delay={2500}
+			  navigation={true}
+			  pagination={true}
+			>
+			  {slides.map((e) => (
+				<swiper-slide> <Image src={e} class="rounded-lg" alt=""/></swiper-slide>
+			  ))}
+		  
+			</swiper-container>
+		  </div>
+	  </div>
+
+	<div class="w-50 px-16 mt-6 mx-44">
+		<swiper-container
+			  slides-per-view="auto"
+			  speed={600}
+			  loop={true}
+			  autoplay-delay={2500}
+			  pagination={true}
+			>
+			  {cards.map((e) => (
+				<swiper-slide> <Card text={e.text} title={e.title} /></swiper-slide>
+			  ))}
+		  
+			</swiper-container>
+	</div>
+</Layout>

@@ -1,0 +1,47 @@
+---
+import { Icon } from "astro-icon/components";
+
+const waMessage = "Salve, sono interessato a prenotare una stanza";
+---
+
+<ul>
+  <li>
+    <h3 class="text-center">CONTATTI</h3>
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900"
+    >
+      <Icon name="ic:round-local-phone" />
+      <a href="tel:+39 3516404020">+39 3516404020</a>
+    </li>
+
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900"
+    >
+      <Icon name="ic:outline-email" />
+      <a href="mailto:tenutaletrerose@gmail.com" class="text-xs">
+        tenutaletrerose@gmail.com
+      </a>
+    </li>
+
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900"
+    >
+      <Icon name="ic:baseline-whatsapp" />
+      <a
+        target="_blank"
+        href={`https://wa.me/393516404020?text=${encodeURIComponent(waMessage)}`}
+      >
+        393516404020
+      </a>
+    </li>
+
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900"
+    >
+      <Icon name="fa-brands:instagram" />
+      <a target="_blank" href="http://instagram.com/_u/tenuta_le3rose/">
+        tenuta_le3rose
+      </a>
+    </li>
+  </li>
+</ul>
