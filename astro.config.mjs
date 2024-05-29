@@ -9,5 +9,6 @@ import netlify from "@astrojs/netlify";
 export default defineConfig({
   integrations: [tailwind(), preact(), icon()],
   output: "server",
-  adapter: netlify()
+  adapter: netlify(),
+  site: "https://darling-trifle-c84866.netlify.app"
 });
