@@ -34,7 +34,7 @@ const sections = [
 
     <a
       rel="canonical"
-      href={Astro.url}
+      href={new URL(Astro.url.pathname, Astro.site)}
       class="sm:ml-4 self-center text-xl font-semibold whitespace-nowrap text-white text-center font-sans flex-1 sm:flex-none"
     >
       Tenuta Le Tre Rose
