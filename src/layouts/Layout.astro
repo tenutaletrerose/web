@@ -1,5 +1,6 @@
 ---
-import "@fontsource/montserrat"
+import { AstroSeo } from "@astrolib/seo";
+import "@fontsource/montserrat";
 //import "@fontsource/montserrat/700.css";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
@@ -7,30 +8,51 @@ interface Props {
   title: string;
 }
 
+const canonical = new URL(Astro.url.pathname, Astro.site).toString();
 const { title } = Astro.props;
+const content =
+  "La Tenuta Le Tre Rose, nel Cilento, è il posto ideale per il tuo soggiorno in relax e i tuoi eventi esclusivi, a pochi km da Villammare e Sapri";
 ---
 
-<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"
+></script>
 
-<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="description"
-      content="Tenuta Le Tre Rosa Vibonati Sapri B&B Booking Airbnb"
+    <AstroSeo
+      title={title}
+      description={content}
+      canonical={canonical}
+      twitter={{
+        site: canonical,
+        
+      }}
+      openGraph={{
+        type: "website",
+        locale: "it_IT",
+        description: content,
+        title: title,
+        url: canonical,
+        site_name: "Tenuta Le Tre Rose",
+        images: [
+          {
+            url: "https://i.imgur.com/iwHghPE.jpeg",
+          },
+        ],
+      }}
     />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
   </head>
   <body>
-	<Header />
+    <Header />
     <div class="w-auto px-4 mt-2 pt-32 bg-tltr-50">
       <slot />
     </div>
-    <div class="h-56 bg-tltr-50"/>
+    <div class="h-56 bg-tltr-50"></div>
     <Footer />
   </body>
 </html>

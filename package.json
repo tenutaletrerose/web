@@ -12,7 +12,9 @@
   "dependencies": {
     "@astrojs/netlify": "^5.2.1",
     "@astrojs/preact": "^3.3.0",
+    "@astrojs/sitemap": "^3.1.5",
     "@astrojs/tailwind": "^5.1.0",
+    "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource/montserrat": "^5.0.18",
     "@iconify-json/bx": "^1.1.10",
     "@iconify-json/fa-brands": "^1.1.8",
