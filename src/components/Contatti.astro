@@ -1,0 +1,54 @@
+---
+import { Icon } from "astro-icon/components";
+
+const waMessage = "Salve, sono interessato a prenotare una stanza";
+---
+
+<ul class="flex flex-col gap-4">
+  <li>
+    <h3 class="text-center text-2xl">CONTATTI</h3>
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900 border-2 border-white shadow-lg transition-all duration-300 ease-in-out"
+    >
+      <Icon name="ic:round-local-phone" class="text-xl" />
+      <a href="tel:+39 3516404020" class="text-md">+39 3516404020</a>
+    </li>
+
+    {
+      /* <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900 border-2 border-white"
+    >
+      <Icon name="ic:outline-email" class="text-lg" />
+      <a href="mailto:tenutaletrerose@gmail.com" class="text-xs">
+        tenutaletrerose@gmail.com
+      </a>
+    </li>*/
+    }
+
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900 border-2 border-white shadow-lg transition-all duration-300 ease-in-out"
+    >
+      <Icon name="ic:baseline-whatsapp" class="text-xl" />
+      <a
+        target="_blank"
+        href={`https://wa.me/393516404020?text=${encodeURIComponent(waMessage)}`}
+        class="text-md"
+      >
+        393516404020
+      </a>
+    </li>
+
+    <li
+      class="flex gap-4 items-center align-center p-2 rounded-xl hover:bg-tltr-100 hover:text-tltr-900 border-2 border-white shadow-lg hover:shadow-none transition-all duration-300 ease-in-out"
+    >
+      <Icon name="fa-brands:instagram" class="text-xl animate-bounce" />
+      <a
+        target="_blank"
+        href="http://instagram.com/_u/tenuta_le3rose/"
+        class="text-md"
+      >
+        tenuta_le3rose
+      </a>
+    </li>
+  </li>
+</ul>

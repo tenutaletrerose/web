@@ -1,0 +1,30 @@
+---
+import { Icon } from 'astro-icon/components';
+
+
+interface Li {
+  icon: string,
+  text: string
+}
+interface Props {
+  title: string;
+  text?: string;
+  lis?: Li[];
+}
+
+const { title, text, lis } = Astro.props;
+---
+
+<article
+  class="grid place-items-center gap-16 sm:w-5/6 h-full m-8 mx-auto p-8 sm:p-12 bg-tltr-900 text-tltr-50 rounded-lg z-10 shadow-lg"
+>
+  <h3 class="font-bold text-center text-tltr-50">{title}</h3>
+  {text && <p class="block text-tltr-50">{text}</p>}
+  {lis && 
+    <ul class="flex flex-col w-full">
+      {lis.map(e => <li class="block flex gap-4 items-center  py-0 px-2 sm:px-4 h-full w-full sm:w-auto">
+          <Icon name={e.icon} class="text-xl text-tltr-50"/> <p class="text-tltr-50">{e.text}</p>
+      </li>)}
+    </ul>
+  }
+</article>

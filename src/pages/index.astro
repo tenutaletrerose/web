@@ -1,0 +1,117 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
+import car1 from "../images/1.jpg";
+import car2 from "../images/2.jpg";
+import car3 from "../images/3.jpg";
+import car4 from "../images/4.jpg";
+
+import logo from "../images/logo-bottom-min.svg";
+
+const slides = [car1, car2, car3, car4];
+const cards = [
+  {
+    icon: "",
+    title: "Nel Parco del Cilento",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Vicino al mare",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Scopri il cilento",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Servizi",
+    lis: [
+      { icon: "tabler:parking-circle", text: "Parcheggio gratuito" },
+      { icon: "tabler:wifi", text: "Wi-fi gratuito" },
+      { icon: "iconoir:yoga", text: "Area Relax"}
+    ],
+  },
+];
+---
+
+<Layout title="Tenuta Le Tre Rose">
+  <div class="container mx-auto w-3/4">
+    <div class="flex flex-col sm:flex-row mx-auto gap-32 items-center">
+      <Image
+        src={logo}
+        class="block shrink-0 max-w-44"
+        alt="Logo Tenuta Le Tre Rose Vibonati Cilento"
+      />
+      <p class="leading-6 box-border block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
+        vulputate arcu, vel aliquam orci. Nulla tempor elementum magna, laoreet
+        eleifend augue. Nulla in neque mollis, fringilla sem a, tincidunt felis.
+        Duis maximus arcu sit amet sapien iaculis suscipit. Cras sit amet
+        feugiat justo, non aliquet mi. Nullam viverra elit felis, id viverra
+        nibh eleifend vel. Nullam hendrerit ante dui, sit amet elementum ex
+        mollis vitae.
+      </p>
+    </div>
+    <div class="w-50 sm:px-16 mt-16">
+      <swiper-container pagination="true" space-between={100}>
+        {
+          slides.map((e) => (
+            <swiper-slide>
+              <Image src={e} class="rounded-lg" alt="" />
+            </swiper-slide>
+          ))
+        }
+      </swiper-container>
+    </div>
+    <h2 class="text-2xl text-center font-bold block shrink-0 mx-auto my-8">
+      La tenuta
+    </h2>
+    <p class="leading-6 box-border block shrink-0">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
+      vulputate arcu, vel aliquam orci. Nulla tempor elementum magna, laoreet
+      eleifend augue. Nulla in neque mollis, fringilla sem a, tincidunt felis.
+      Duis maximus arcu sit amet sapien iaculis suscipit. Cras sit amet feugiat
+      justo, non aliquet mi. Nullam viverra elit felis, id viverra nibh eleifend
+      vel. Nullam hendrerit ante dui, sit amet elementum ex mollis vitae.
+    </p>
+  </div>
+
+  <div class="w-50 px-8 sm:px-16 mt-6 sm:mx-44">
+    <swiper-container
+      slides-per-view="auto"
+      speed={600}
+      loop={true}
+      autoplay-delay={6000}
+      pagination={true}
+      space-between={100}
+    >
+      {
+        cards.map((e) => (
+          <swiper-slide>
+            {" "}
+            <Card text={e.text} title={e.title} lis={e.lis} />
+          </swiper-slide>
+        ))
+      }
+    </swiper-container>
+  </div>
+</Layout>
+
+<style>
+  swiper-container::part(bullet-active) {
+    background-color: #be1c2d;
+  }
+
+  swiper-container::part(bullet) {
+    background-color: black;
+    opacity: 0.6;
+  }
+
+  swiper-container::part(button-next) {
+    padding: 8px 16px;
+  }
+</style>

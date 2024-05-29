@@ -1,0 +1,61 @@
+---
+import { Image, getImage } from "astro:assets";
+import DrawerButton from "./header";
+import Drawer from "./drawer";
+import logoNavbar from "../images/logonavbar2.svg";
+import logoBottom from "../images/logo-bottom-min.svg";
+const logoBottomOpt = await getImage({
+  src: logoBottom,
+});
+const sections = [
+  { lbl: "Home", href: "/" },
+  { lbl: "Le stanze", href: "/le-stanze" },
+  { lbl: "Dove Siamo", href: "/dove-siamo" },
+  { lbl: "Contatti", href: "#footer" },
+];
+---
+
+<nav class="bg-tltr z-20 shadow-lg fixed left-0 top-0 right-0 rounded-b-lg">
+  <div
+    class="flex items-center justify-center sm:justify-between overflow-x-hidden mx-1 py-1 px-2"
+  >
+    <a href="/" class="">
+      {
+        (
+          <Image
+            src={logoNavbar}
+            class=" mb-0 h-12 w-16"
+            alt="Tenuta Le Tre Rose"
+          />
+        )
+      }
+    </a>
+
+    <a
+      href="/"
+      class="sm:ml-4 self-center text-xl font-semibold whitespace-nowrap text-white text-center font-sans flex-1 sm:flex-none"
+    >
+      Tenuta Le Tre Rose
+    </a>
+    <div class="hidden w-full md:block md:w-auto mx-auto" id="navbar-default">
+      <ul
+        class="flex flex-col p-4 md:p-0 mt-4 sm:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0"
+      >
+        {
+          sections.map((e) => (
+            <li>
+              <a
+                href={e.href}
+                class={`block px-0 text-white text-white hover:bg-tltr-600 rounded-lg px-2 py-2 transition-all duration-300 ease-in-out`}
+              >
+                {e.lbl}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <DrawerButton client:load />
+  </div>
+</nav>
+<Drawer sections={sections} logo={logoBottomOpt} client:load />

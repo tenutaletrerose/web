@@ -1,0 +1,65 @@
+---
+import Contatti from "./Contatti.astro";
+import FooterBanner from "./FooterBanner.astro";
+import logoBottom from "../images/logo-bottom-min.svg";
+import { Image } from "astro:assets";
+import { getImage } from "astro:assets";
+const logoBottomOpt = await getImage({
+  src: logoBottom,
+  width: 128,
+  height: 128,
+  format: "jpg",
+});
+---
+
+<footer id="footer" class="pb-5 bg-tltr-950 text-tltr-50 pb-32 sm:pb-0 h-auto">
+  <FooterBanner/>
+
+  <section class="px-12 -mt-36">
+    <ul
+      class="p-0 m-0 grid grid-cols-1 sm:grid-cols-2 gap-4 justify-items-center items-center mx-4 sm:mx-32"
+    >
+      <li
+        class="flex flex-col gap-4 items-center align-center py-16 rounded-lg"
+      >
+        <Image
+          src={logoBottomOpt.src}
+          alt="Tenuta Le Tre Rose Vibonati"
+          class="logo-bottom block"
+          height={256}
+          width={256}
+        />
+        <p class="text-center">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vestibulum
+          commodo enim ac semper. Morbi feugiat arcu massa.
+        </p>
+      </li>
+
+      <Contatti />
+    </ul>
+  </section>
+  <div class="h-32 sm:hidden"></div>
+  <section class="pt-3 border-t-2 border-ltlr-50 text-sm text-center mx-8">
+    Copyright Tenuta Le Tre Rose - P. Iva xxxxxxx
+  </section>
+</footer>
+
+<style>
+  @keyframes Gradient {
+    0% {
+      background-position: 0% 50%;
+    }
+
+    50% {
+      background-position: 100% 50%;
+    }
+
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+
+  .logo-bottom {
+    filter: brightness(0) invert(1);
+  }
+</style>
