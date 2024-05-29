@@ -44,7 +44,7 @@ const cards = [
 ---
 
 <Layout title="Tenuta Le Tre Rose - B&B ed Eventi - Vibonati Cilento ">
-  <div class="container mx-auto w-3/4">
+  <div class="container mx-auto w-11/12">
     <div class="flex flex-col sm:flex-row mx-auto gap-32 items-center">
       <Image
         src={logo}
@@ -63,11 +63,20 @@ const cards = [
       </p>
     </div>
     <div class="w-50 sm:px-16 mt-16">
-      <swiper-container pagination="true" space-between={100}>
+      <swiper-container
+        pagination="true"
+        space-between={100}
+        autoplay-delay={2500}
+        slides-per-view={1}
+      >
         {
           slides.map((e) => (
             <swiper-slide>
-              <Image src={e.src} class="rounded-lg" alt={e.desc} />
+              <Image
+                src={e.src}
+                class="rounded-lg h-auto max-w-full"
+                alt={e.desc}
+              />
             </swiper-slide>
           ))
         }
