@@ -9,7 +9,12 @@ import car4 from "../images/4.jpg";
 
 import logo from "../images/logo-bottom-min.svg";
 
-const slides = [car1, car2, car3, car4];
+const slides = [
+  { src: car1, desc: "La struttura" },
+  { src: car2, desc: "La struttura" },
+  { src: car3, desc: "La struttura" },
+  { src: car4, desc: "La struttura" },
+];
 const cards = [
   {
     icon: "",
@@ -32,7 +37,7 @@ const cards = [
     lis: [
       { icon: "tabler:parking-circle", text: "Parcheggio gratuito" },
       { icon: "tabler:wifi", text: "Wi-fi gratuito" },
-      { icon: "iconoir:yoga", text: "Area Relax"}
+      { icon: "iconoir:yoga", text: "Area Relax" },
     ],
   },
 ];
@@ -45,6 +50,7 @@ const cards = [
         src={logo}
         class="block shrink-0 max-w-44"
         alt="Logo Tenuta Le Tre Rose Vibonati Cilento"
+        loading="eager"
       />
       <p class="leading-6 box-border block">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
@@ -61,15 +67,15 @@ const cards = [
         {
           slides.map((e) => (
             <swiper-slide>
-              <Image src={e} class="rounded-lg" alt="" />
+              <Image src={e.src} class="rounded-lg" alt={e.desc} />
             </swiper-slide>
           ))
         }
       </swiper-container>
     </div>
-    <h2 class="text-2xl text-center font-bold block shrink-0 mx-auto my-8">
+    <h1 class="text-2xl text-center font-bold block shrink-0 mx-auto my-8">
       La tenuta
-    </h2>
+    </h1>
     <p class="leading-6 box-border block shrink-0">
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ac
       vulputate arcu, vel aliquam orci. Nulla tempor elementum magna, laoreet
