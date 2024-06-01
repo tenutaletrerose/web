@@ -25,6 +25,7 @@
     "@iconify-json/majesticons": "^1.1.11",
     "@iconify-json/tabler": "^1.1.113",
     "@nanostores/preact": "^0.5.1",
+    "@playform/compress": "^0.0.10",
     "astro": "^4.9.2",
     "astro-icon": "^1.1.0",
     "nanostores": "^0.10.3",
