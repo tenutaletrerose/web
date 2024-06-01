@@ -1,9 +1,91 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import { Image } from "astro:assets";
+
+import car1 from "../images/1.jpg";
+import car2 from "../images/2.jpg";
+import car3 from "../images/3.jpg";
+import car4 from "../images/4.jpg";
+const slides = [
+  { src: car1, desc: "La struttura" },
+  { src: car2, desc: "La struttura" },
+  { src: car3, desc: "La struttura" },
+  { src: car4, desc: "La struttura" },
+];
 ---
 
 <Layout title="Tenuta Le Tre Rose">
-    <div class="container mx-auto w-3/4 ">
-        <h1 class="text-center font-bold text-lg">Le stanze</h1>
+  <div class="container mx-auto w-3/4">
+    <h1 class="text-2xl text-center block shrink-0 mx-auto my-8 italic font-serif text-tltr-900">Le stanze</h1>
+    <div class="w-50 sm:px-16 mt-16">
+      <swiper-container id="sw1" init="false">
+        {
+          slides.map((e) => (
+            <swiper-slide>
+              <div class="swiper-zoom-container">
+                <Image
+                  loading="eager"
+                  src={e.src}
+                  class="rounded-lg h-auto max-w-full"
+                  alt={e.desc}
+                />
+              </div>
+            </swiper-slide>
+          ))
+        }
+      </swiper-container>
+      <swiper-container id="sw2" class="swiper-thumbs my-4" init="false">
+        {
+          slides.map((e) => (
+            <swiper-slide>
+              <Image
+                loading="eager"
+                src={e.src}
+                class="rounded-lg h-auto max-w-full"
+                alt={e.desc}
+              />
+            </swiper-slide>
+          ))
+        }
+      </swiper-container>
     </div>
+  </div>
 </Layout>
+
+<script>
+  const sw1 = document.querySelector("#sw1");
+  const sw2 = document.querySelector("#sw2");
+
+  const sw1p = {
+    spaceBetween: "10",
+    pagination: true,
+    zoom: true,
+    effect: "fade",
+    loop: true,
+    thumbs: {
+        swiper: ".swiper-thumbs"
+    }
+  };
+  const sw2p = {
+    loop: "true",
+    spaceBetween: 10,
+    slidesPerView: 4,
+    freeMode: true,
+    watchSlidesProgress: true,
+  };
+  Object.assign(sw1, sw1p);
+  Object.assign(sw2, sw2p);
+
+  sw1.initialize();
+  sw2.initialize();
+</script>
+
+<style>
+     #sw2 swiper-slide {
+      opacity: 0.4;
+    }
+
+    #sw2 .swiper-slide-thumb-active {
+      opacity: 1;
+    }
+</style>

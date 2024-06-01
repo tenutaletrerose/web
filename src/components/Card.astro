@@ -6,25 +6,80 @@ interface Li {
   icon: string,
   text: string
 }
-interface Props {
-  title: string;
-  text?: string;
-  lis?: Li[];
-}
 
-const { title, text, lis } = Astro.props;
+const cards = [
+  {
+    icon: "",
+    title: "Nel Parco del Cilento",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Vicino al mare",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Scopri il cilento",
+    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus purus at ultricies vehicula. Nam vitae nibh semper, pharetra velit vitae, sodales metus. Quisque placerat mattis augue nec dictum. Donec finibus egestas condimentum. Nunc laoreet ante.",
+  },
+  {
+    icon: "",
+    title: "Servizi",
+    lis: [
+      { icon: "tabler:parking-circle", text: "Parcheggio gratuito" },
+      { icon: "tabler:wifi", text: "Wi-fi gratuito" },
+      { icon: "iconoir:yoga", text: "Area Relax" },
+    ],
+  },
+];
+//sm:w-5/6 h-full p-8 sm:p-12 bg-tltr-900 text-tltr-50 rounded-lg
 ---
 
-<article
-  class="grid place-items-center gap-16 sm:w-5/6 h-full m-8 mx-auto p-8 sm:p-12 bg-tltr-900 text-tltr-50 rounded-lg z-10 shadow-lg"
->
-  <h3 class="font-bold text-center text-tltr-50">{title}</h3>
-  {text && <h2 class="block text-tltr-50">{text}</h2>}
-  {lis && 
-    <ul class="flex flex-col w-full">
-      {lis.map(e => <li class="block flex gap-4 items-center  py-0 px-2 sm:px-4 h-full w-full sm:w-auto">
-          <Icon name={e.icon} class="text-xl text-tltr-50"/> <p class="text-tltr-50">{e.text}</p>
-      </li>)}
-    </ul>
+<div class="px-8 sm:px-16 mt-6">
+  <swiper-container
+    grab-cursor="true"
+    speed={600}
+    effect="cards"
+    autoplay-delay={3000}
+    pagination={true}
+    pagination-clickable={true}
+  >
+    {
+      cards.map((e) => (
+        <swiper-slide>
+          <h3 class="font-bold text-center text-tltr-50">{e.title}</h3>
+          {e.text && <h2 class="block text-tltr-50">{e.text}</h2>}
+          {e.lis && (
+            <ul class="flex flex-col w-full">
+              {e.lis.map((e) => (
+                <li class="block flex gap-4 items-center  py-0 px-2 sm:px-4 h-full w-full sm:w-auto">
+                  <Icon name={e.icon} class="text-xl text-tltr-50" />
+                  <p class="text-tltr-50 mx-32">{e.text}</p>
+                </li>
+              ))}
+            </ul>
+          )}
+        </swiper-slide>
+      ))
+    }
+  </swiper-container>
+</div>
+
+<style>
+
+  swiper-container {
+    height: 320px;
+    margin: 0 auto;
   }
-</article>
+  swiper-slide {
+    display: grid;
+    background-color: #7f1d27;
+    border-radius: 24px;
+    padding: 32px 32px;
+    gap: 16px;
+    z-index: 10;
+    margin: 32px auto;
+    place-items: center;
+  }
+</style>
