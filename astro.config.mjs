@@ -7,8 +7,14 @@ import netlify from "@astrojs/netlify";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), preact(), icon(), sitemap(), (await import("@playform/compress")).default()],
+  integrations: [
+    tailwind(),
+    preact(),
+    icon(),
+    sitemap(),
+    (await import("@playform/compress")).default(),
+  ],
   output: "server",
   adapter: netlify(),
-  site: "https://darling-trifle-c84866.netlify.app"
+  site: "https://darling-trifle-c84866.netlify.app",
 });
